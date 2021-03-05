@@ -6,9 +6,9 @@
 - If you wish to download and run the file, please <b>change the directory of all files load functions</b>, otherwise it's not going to work
 
 ## Project Overview
-&nbsp;&nbsp;&nbsp;&nbsp;We are trying to automate the labeling process of an online fashion shop which sells 3 main product categories which are <b>Trousers&Jeans, Shoes, and Glasses&Sunglasses</b>. This is the best fit to do images classification with CNN. Trousers&Jeans and Shoes both have sublabels for <b>'male'</b> and <b>'female'</b>. Moreover, 
+&nbsp;&nbsp;&nbsp;&nbsp;We are trying to automate the labelling process of an online fashion shop which sells 3 main product categories which are <b>Trousers&Jeans, Shoes, and Glasses&Sunglasses</b>. This is the best fit to do images classification with CNN. Trousers&Jeans and Shoes both have sublabels for <b>'male'</b> and <b>'female'</b>. Moreover, 
 Shoes is the most complex one, it can be subcategorized into <b>'Boots', 'Trainers/Sneakers', 'Sandals/Flip flops/Slippers', 'Formal shoes','Others'</b> under <b>'male'</b> category, and <b>'Boots', 'Ballerina', 'Trainers/Sneakers','High heels', 'Sandals/Flip flops/Slippers', 'Others'</b> under <b>'female'</b> category.  
-&nbsp;&nbsp;&nbsp;&nbsp;So overall, this is a multi-classes muti-labels problem. In this project, I have tried 2 different approaches, which are Combined and Hierarchical, for those categories having subcategories. Combined approach is to combine all possible combination labels into a single classes example 'Boots' under 'male' will be combined in to 'Boots male' as 1 label, and so on.
+&nbsp;&nbsp;&nbsp;&nbsp;So overall, this is a multi-classes muti-labels problem. In this project, We have tried 2 different approaches, which are Combined and Hierarchical, for those categories having subcategories. Combined approach is to combine all possible combination labels into a single classes example 'Boots' under 'male' will be combined in to 'Boots male' as 1 label, and so on.
 Hierarchical approach is to train the separated model to perform different tasks, for example, first we classify whether its 'male' or 'female', if it's male, which of 5 labels in male shoes it is belong to.
   
 ## Results
@@ -39,19 +39,19 @@ Hierarchical approach is to train the separated model to perform different tasks
 - Trousers&Jeans_Male -> kernel_size_1: **3**, kernel_size_2: **3**, kernel_num: **64**, dense_size: **256**
 - Trousers&Jeans_Female -> kernel_size_1: **3**, kernel_size_2: **3**, kernel_num: **128**, dense_size: **256**
 ### Combined model vs Hierarchical model
-&nbsp;&nbsp;&nbsp;&nbsp;We evaluate the score by manual loop counting; If the model classify Gender correctly, it will get 1 score. Then if it classify Label correctly, it will get another 1 score. Here is the result both:  
+&nbsp;&nbsp;&nbsp;&nbsp;We evaluated the score by manual loop counting; If the model classify Gender correctly, it will get 1 score. Then if it classify Label correctly, it will get another 1 score. Here is the result both:  
 ***You can take a look in more detail how we did this in Compare_Combined_and_Hierarchical.ipynb***  
 - Trouers&Jeans -> Combined Model: **869** points, Hierarchical Model: **868** points (No difference)
 - Shoes -> Combined Model: **981** points, Hierarchical Model: **991** points (Hierarchical Model performs about **10%** better)
 ### Hyperparameters tuning processes with TensorBoard
-&nbsp;&nbsp;&nbsp;&nbsp;During Hyperparameters process, we use TensorBoard to visualize all of the result from each values each epoch and we also plot the confusion matrix with sklearn and show on TensorBoard. This is from one of them:  
+&nbsp;&nbsp;&nbsp;&nbsp;During Hyperparameters process, we used TensorBoard to visualize all of the result from each values each epoch and we also plotted the confusion matrix with sklearn and show on TensorBoard. This is from one of them:  
 <img src = "./images/primary_fit.jpg">  
 <img src = "./images/primary_histogram.jpg">  
 <img src = "./images/primary_cm_all.jpg">  
 <img src = "./images/primary_tuning.jpg">  
 ## Dataset
 ***Please refer to 'dataset' on Google Drive for full data***  
-&nbsp;&nbsp;&nbsp;&nbsp;We've already convert the images into ndarray and save them to **.npz** for ease of use and fast processing. We can refer to the file **'Convert_img_to_ndarray.ipynb"** how we did this conversion. Furthermore, for **shoes category**, before we train/val we need to do **data augmentation** too because shoes have a direction that they are pointing to, if we didn't do any augmentation when it see the real world images in the different direction, it will have trouble classifying them. Anyways, we still provide some examples of our images data in **'Sample images (Full size)'** folder.  
+&nbsp;&nbsp;&nbsp;&nbsp;We've already converted the images into ndarray and save them to **.npz** for ease of use and fast processing. You can refer to the file **'Convert_img_to_ndarray.ipynb"** how we did this conversion. Furthermore, for **shoes category**, before we train/val, we need to do **data augmentation** too because shoes have a direction that they are pointing to, if we didn't do any augmentation when it see the real world images in the different direction, it will have trouble classifying them. We provide some examples of our images data in **'Sample images (Full size)'** folder.  
 Here are some examples:  
 <img src = "./Sample images (Full size)/00005_15490509_Glasses & Sunglasses.jpg" width="150" height="200">
 <img src = "./Sample images (Full size)/02531_15182342_Glasses & Sunglasses.jpg" width="150" height="200">
@@ -73,7 +73,7 @@ Here are some examples:
 <img src = "./Sample images (Full size)/12614_15482675_Shoes.jpg" width="150" height="200">
 
 ## Plan to attack
-1. Create **Primary Classification** model which aim to classify whether images are 'Trousers&Jeans' or 'Shoes' or 'Glasses&Sunglasses'.
+1. Create **Primary Classification** model which aims to classify whether images are 'Trousers&Jeans' or 'Shoes' or 'Glasses&Sunglasses'.
 2. Create all of model to classify further down in each class both **combined and hierarchical** approach.
 3. If it is Glasses&Sunglasses, we will use **Glasses&Sunglasses classification** model which aim to classify 'Glasses' or 'Sunglasses'. (There is no gender specific for glasses)
 4. If it is Shoes, we will use **Shoes_Gender model** to classify whether it's male or female. Then, we will use **Shoes_Male** and **Shoes_Female** model to classify which type of shoes.
@@ -105,6 +105,6 @@ numpy, tensorflow, sklearn, PIL, matplotlib
 <b>We also apply L2 to some models. Please check .ipynb files for each model if you wish</b>
 
 ## Problems we found in this project
-&nbsp;&nbsp;&nbsp;&nbsp;There is only one main big problem occur when we test our model with test set. It appeared to predict everything wrong with .evaluate() function. However, when we tried using .predict() function it appears to be fine. So, we went for .predict() and write a code to calculate it manually.
+&nbsp;&nbsp;&nbsp;&nbsp;There is only one main big problem occurred when we test our model with test set. It appeared to predict everything wrong with .evaluate() function. However, when we tried using .predict() function it appears to be fine. So, we went for .predict() and write a code to calculate it manually.
 
 # Thank you for reaching out and read til the end. You are AMAZING. :D
