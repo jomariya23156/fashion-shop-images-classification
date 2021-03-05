@@ -1,9 +1,9 @@
 # Fashion Shop Images Classification
 
-## Very Important notes before getting started
-- We have some troubles uploading very very large files on Github. So, if you wish to download <b>dataset</b>, pleae download from here: https://drive.google.com/file/d/1hX7gIACOXYWMfxgvTR55zQSidXoLcxIo/view?usp=sharing
-- We have some troubles uploading very very large files on Github. So, if you wish to download <b>trained saved models</b>, pleae download from here:  https://drive.google.com/file/d/18GY5b6f9qKRSJOw0qlLb7eig9Zb2zfO9/view?usp=sharing
-- If you wish to download and run the file, please <b>change the directory of all files load functions</b>, otherwise it's not going to work
+## Important notes before getting started
+- If you wish to download <b>dataset</b>, pleae download from here: https://drive.google.com/file/d/1hX7gIACOXYWMfxgvTR55zQSidXoLcxIo/view?usp=sharing
+- If you wish to download <b>trained saved models</b>, pleae download from here: https://drive.google.com/file/d/18GY5b6f9qKRSJOw0qlLb7eig9Zb2zfO9/view?usp=sharing
+- If you wish to download and run the .ipynb files, please <b>change the directory of all files load functions</b>, otherwise it's not going to work
 
 ## Project Overview
 &nbsp;&nbsp;&nbsp;&nbsp;We are trying to automate the labeling process of an online fashion shop which sells 3 main product categories which are <b>Trousers&Jeans, Shoes, and Glasses&Sunglasses</b>. This is the best fit to do images classification with CNN. Trousers&Jeans and Shoes both have sublabels for <b>'male'</b> and <b>'female'</b>. Moreover, 
