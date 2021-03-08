@@ -13,7 +13,7 @@ Hierarchical approach is to train the separated model to perform different tasks
   
 ## Results
 ### Accuracy
-- Primary_Classification -> Validation accuracy: **100%** | Test accuracy: **99.75%**
+- Primary_Classification -> Validation accuracy: **100%**, Test accuracy: **99.75%**
 - Glasses&Sunglasses -> Validation accuracy: **96.40%**, Test accuracy: **95.60%**
 - Shoes_All_Dropout -> Validation accuracy: **76.20%**, Test accuracy: **75.12%**
 - Shoes_Gender_L2 -> Validation accuracy: **83.50%**, Test accuracy: **82.23%**
